@@ -14,14 +14,14 @@ function addMarkers(openTag, closeTag) {
       updatePreview();
     }
 
-    function addLineBreak(lineBreak) {
+    function addLiteralText(literalText) {
       var textarea = document.getElementById("myTextarea");
       var start = textarea.selectionStart;
       var end = textarea.selectionEnd;
 
       var selectedText = textarea.value.substring(start, end);
       var newText = textarea.value.substring(0, start) +
-                    lineBreak + selectedText +
+                    literalText + selectedText +
                     textarea.value.substring(end);
       textarea.value = newText;
 
