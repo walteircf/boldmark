@@ -31,6 +31,8 @@
 
   <button class="btn btn-primary" onclick="addMarkers('<b>', '</b>')">Adicionar Negrito</button>
   <button class="btn btn-primary" onclick="addMarkers('{{italicValue@open}}', '{{italicValue@close}}')">Adicionar Itálico</button>
+  <button class="btn btn-secondary" onclick="addLineBreak('\n')">Pular Linha</button>
+  <button class="btn btn-secondary" onclick="addLineBreak('\n\n')">Pular Duas Linhas</button>
 
   <div id="preview" class="mt-3 bg-white">Pré-visualização</div>
 
@@ -56,6 +58,20 @@
       updatePreview();
     }
 
+    function addLineBreak(lineBreak) {
+      var textarea = document.getElementById("myTextarea");
+      var start = textarea.selectionStart;
+      var end = textarea.selectionEnd;
+
+      var selectedText = textarea.value.substring(start, end);
+      var newText = textarea.value.substring(0, start) +
+                    lineBreak + selectedText +
+                    textarea.value.substring(end);
+      textarea.value = newText;
+
+      updatePreview();
+    }
+
     function updatePreview() {
       var previewDiv = document.getElementById("preview");
       var textarea = document.getElementById("myTextarea");
@@ -65,7 +81,7 @@
       var htmlText = text.replace(/\<\b\>(.*?)\<\/b\>/g, '<strong>$1</strong>')
                          .replace(/\{\{italicValue@open\}\}(.*?)\{\{italicValue@close\}\}/g, '<em>$1</em>');
 
-      // Adiciona quebra de linha como \n se o checkbox estiver marcado
+      // Adiciona quebra de linha como <br> se o checkbox estiver marcado
       if (document.getElementById("newlineCheckbox").checked) {
         htmlText = htmlText.replace(/\\n/g, '<br>');
       }
