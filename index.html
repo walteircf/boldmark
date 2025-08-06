@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor de Texto Dinâmico</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>📝 Editor de Texto com Marcadores</h1>
+
+    <textarea id="myTextarea" rows="6" oninput="updatePreview()" onkeydown="checkEnter(event)"
+      placeholder="Digite aqui e selecione palavras para aplicar *negrito* ou {{itálico}}..."></textarea>
+
+    <div class="options">
+      <label>
+        <input type="checkbox" id="newlineCheckbox" onclick="updatePreview()" />
+        Adicionar quebra de linha
+      </label>
+    </div>
+
+    <div class="button-group">
+      <button onclick="addMarkers('*', '*')">⭐ Negrito</button>
+      <button onclick="addMarkers('{{italicValue@open}}', '{{italicValue@close}}')">✨ Itálico</button>
+      <button onclick="addLiteralText('\\n')">↩️ Linha</button>
+      <button onclick="addLiteralText('\\n\\n')">↩️↩️ Duas Linhas</button>
+    </div>
+
+    <div id="preview" class="preview">Pré-visualização...</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
