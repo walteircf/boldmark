@@ -113,7 +113,7 @@ Sinta-se à vontade para abrir issues, enviar PRs ou sugerir melhorias.
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
